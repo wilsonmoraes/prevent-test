@@ -1,0 +1,27 @@
+package br.com.crdd.web.accesLog;
+
+import br.com.crdd.common.mapper.BaseDTO;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
+
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@ApiModel(description = "Log detail property.")
+public class AccessLogDto implements BaseDTO {
+    private Long id;
+    private LocalDateTime dateTimeAudit;
+    private String dateTimeAuditAux;
+    private String clientIP;
+    private String methodRequest;
+    private Integer statusCodeResponde;
+    private String client;
+
+}

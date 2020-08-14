@@ -1,0 +1,62 @@
+<div class="container">
+  <h1>Angular CRUD Log Prevent Example</h1>
+
+  <a style="margin-bottom: 15px;" href="#" routerLink="/post/create/" class="btn btn-success">Create New Log</a>
+
+
+  <p-table #dt
+
+           (onLazyLoad)="findAllPaged($event,null)"
+           [lazy]="true"
+           [totalRecords]="pontoDistribuicaoResponse?.totalElements"
+           [value]="pontoDistribuicaoResponse?.content"
+           [columns]="cols"
+           [responsive]="true"
+           [paginator]="true"
+           [rows]="20"
+           [rowHover]="true">
+
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngFor="let col of columns" [ngStyle]="col.ngStyle"
+            [pSortableColumnDisabled]="!col.sortField" [pSortableColumn]="col.sortField">
+          {{col.header}}
+          <p-sortIcon *ngIf="col.sortField" ariaLabel="Activate to sort"
+                      ariaLabelDesc="Activate to sort in descending order"
+                      ariaLabelAsc="Activate to sort in ascending order"></p-sortIcon>
+        </th>
+      </tr>
+      <tr>
+        <th *ngFor="let col of columns">
+
+          <input *ngIf="col.filterField" class="form-control" pInputText type="text"
+                 (input)="dt.filter($event.target['value'], col.filterField, 'contains')">
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <!--{{pontoDistribuicaoResponse?.total}} logs encontrados-->
+    </ng-template>
+    <ng-template pTemplate="body" let-columns="columns" let-rowData>
+      <tr class="ng-star-inserted">
+        <td class="align-middle" *ngFor="let col of columns" [ngSwitch]="col.field"
+            [ngStyle]="col.ngStyle">
+          <span *ngSwitchCase="'action'">
+            <button style="width: 100%" (click)="visualizar(rowData)" class="btn btn-primary btn-sm"><i
+              class="feather ft-plus white"></i>
+              Ver
+            </button>
+
+            <button style="width: 100%; margin-top: 2px" (click)="remover(rowData)" class="btn btn-warning btn-sm"><i
+              class="feather ft-plus white"></i>
+              Remover
+            </button>
+
+          </span>
+          <span *ngSwitchDefault>{{rowData[col.field]}}</span>
+          <!-- </button> -->
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
