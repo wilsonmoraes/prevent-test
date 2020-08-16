@@ -1,7 +1,6 @@
 package br.com.crdd.web.accesLog;
 
 import br.com.crdd.common.mapper.BaseDTO;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

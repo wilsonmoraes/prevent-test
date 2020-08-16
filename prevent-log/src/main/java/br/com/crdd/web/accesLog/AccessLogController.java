@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * the main web api for customer CRUD
+ * the main br.com.crdd.web api for customer CRUD
  */
 @RestController
 @RequestMapping(value = "/open/access_log", produces = MediaType.APPLICATION_JSON_VALUE)
