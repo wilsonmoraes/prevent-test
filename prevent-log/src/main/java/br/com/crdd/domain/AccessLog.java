@@ -28,6 +28,9 @@ public class AccessLog implements BaseEntity<Long> {
     private LocalDateTime dateTimeAudit;
 
     @Column
+    private LocalDateTime registrationDate;
+
+    @Column
     private String clientIP;
 
     @Column

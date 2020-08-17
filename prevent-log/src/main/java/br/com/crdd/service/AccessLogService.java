@@ -14,6 +14,7 @@ import java.io.InputStreamReader;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 /**
@@ -80,6 +81,9 @@ public class AccessLogService {
     }
 
     public AccessLog save(AccessLog accessLog) {
+        if (Objects.isNull(accessLog.getId())) {
+            accessLog.setRegistrationDate(LocalDateTime.now());
+        }
         return accessLogRepository.save(accessLog);
     }
 

@@ -1,8 +1,7 @@
-package br.com.crdd.repository;
+package br.com.crdd.service;
 
 
 import br.com.crdd.config.IntegrationTest;
-import br.com.crdd.dao.AccessLogRepository;
 import br.com.crdd.domain.AccessLog;
 import org.junit.Assert;
 import org.junit.Test;
@@ -12,21 +11,23 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @IntegrationTest
 @Transactional
-public class AccessLogRepositoryTest {
+public class AccessLogServiceTest {
+
     @Autowired
-    private AccessLogRepository accessLogRepository;
+    private AccessLogService accessLogService;
 
 
     @Test
-    public void testFindAll() {
-        List<AccessLog> customers = accessLogRepository.findAll();
-        Assert.assertFalse(customers.isEmpty());
+    @Rollback
+    public void testSaveLog() {
+        AccessLog accessLog = AccessLog.builder().clientIP("wilson__..").build();
+        accessLog = accessLogService.save(accessLog);
+        Assert.assertNotNull(accessLog.getRegistrationDate());
+
     }
 
 
