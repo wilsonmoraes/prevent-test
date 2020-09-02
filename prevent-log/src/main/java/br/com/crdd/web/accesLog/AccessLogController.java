@@ -30,34 +30,6 @@ public class AccessLogController {
     private ControllerManager controllerManager;
 
 
-    /*@GetMapping(value = "findOne/{id}")
-    public ResponseEntity<VeiculoDto> getOneById(@PathVariable long id) {
-        VeiculoDto response = controllerManager.entityToDto(veiculoService.findCustomerById(id), VeiculoDto.class);
-        return ResponseEntity.status(Objects.isNull(response) ? HttpStatus.NO_CONTENT : HttpStatus.OK)
-                .body(response);
-    }
-
-    @PostMapping("/all")
-    public ResponseEntity<PageResult<VeiculoFindAllResponse>> findAll(@RequestBody VeiculoFindAllRequest request) {
-        PageRequest pageRequest = controllerManager.toPageRequest(request);
-        Page<Veiculo> consulta = veiculoService.findAllPaged(pageRequest);
-        return ResponseEntity.status(HttpStatus.OK).body(controllerManager.toPageResult(consulta, VeiculoFindAllResponse.class));
-    }
-
-    @PostMapping(value = "/save")
-    public ResponseEntity<VeiculoDto> save(@RequestBody VeiculoDto request) {
-        Veiculo veiculo = controllerManager.dtoToEntity(request, Veiculo.class);
-        veiculo = veiculoService.save(veiculo);
-        return ResponseEntity.status(HttpStatus.OK).body(controllerManager.entityToDto(veiculo, VeiculoDto.class));
-    }
-
-    @GetMapping(value = "/autocomplete")
-    public ResponseEntity<List<VeiculoAutoCompleteResponse>> getAutoComplete(@RequestParam String query, @RequestParam int maxResults) {
-        List<Veiculo> consulta = veiculoService.findAllByPlaca(query, PageRequest.of(0, maxResults));
-        return ResponseEntity.status(HttpStatus.OK)
-                .body(controllerManager.entityToDto(consulta, VeiculoAutoCompleteResponse.class));
-    }*/
-
     @PostMapping(value = "/upload")
     public ResponseEntity<Void> uploadLog(@RequestParam(value = "file", required = false) MultipartFile file) throws Exception {
         service.upload(file);
