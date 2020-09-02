@@ -16,10 +16,10 @@ import javax.transaction.Transactional;
 public interface AccessLogRepository extends JpaRepository<AccessLog, Long> {
 
     @Query("SELECT bean from AccessLog bean "
-            + " where (bean.clientIP like %:clientIP% or :clientIP is null)"
-            + " and (bean.methodRequest like %:methodRequest% or :methodRequest is null)"
-            + " and (bean.statusCodeResponde =:statusCodeResponde or :statusCodeResponde is null)"
-            + " and (bean.client like %:client% or :client is null)")
+            + " where (:clientIP is null or bean.clientIP like %:clientIP%)"
+            + " and (:methodRequest is null or lower(bean.methodRequest) like %:methodRequest%)"
+            + " and (:statusCodeResponde is null or bean.statusCodeResponde =:statusCodeResponde)"
+            + " and (:client is null or lower(bean.client) like %:client%)")
     Page<AccessLog> findAllPaginated(@Param("clientIP") String clientIP,
                                      @Param("methodRequest") String methodRequest,
                                      @Param("statusCodeResponde") Integer statusCodeResponde,

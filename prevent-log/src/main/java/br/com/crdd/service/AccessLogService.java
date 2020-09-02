@@ -55,7 +55,11 @@ public class AccessLogService {
                                             String methodRequest,
                                             Integer statusCodeResponde,
                                             String client, PageRequest pageRequest) {
-        return accessLogRepository.findAllPaginated(StringUtils.defaultIfEmpty(clientIP, null), methodRequest, statusCodeResponde, client, pageRequest);
+        return accessLogRepository
+                .findAllPaginated(StringUtils.lowerCase(clientIP),
+                        StringUtils.lowerCase(methodRequest),
+                        statusCodeResponde,
+                        StringUtils.lowerCase(client), pageRequest);
     }
 
     public void deleteById(Long id) {
