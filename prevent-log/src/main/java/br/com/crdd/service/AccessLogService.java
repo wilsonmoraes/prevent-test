@@ -51,24 +51,6 @@ public class AccessLogService {
     }
 
 
-    /*public Veiculo findCustomerById(Long id) {
-        return veiculoRepository.findById(id).orElse(null);
-    }
-
-    public Page<Veiculo> findAllPaged(PageRequest pageRequest) {
-        return veiculoRepository.findAll(pageRequest);
-    }
-
-
-    public Veiculo save(Veiculo veiculo) {
-
-        if (StringUtils.isEmpty(veiculo.getPlaca())) {
-            throw new BusinessException("A placa é obrigatória.");
-        }
-
-        return veiculoRepository.save(veiculo);
-    }
-*/
     public Page<AccessLog> findAllPaginated(String clientIP,
                                             String methodRequest,
                                             Integer statusCodeResponde,
