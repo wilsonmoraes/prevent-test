@@ -1,4 +1,4 @@
-package br.com.crdd.web.accesLog;
+package br.com.crdd.web.open.accesLog;
 
 import br.com.crdd.common.mapper.BaseDTO;
 import lombok.Data;

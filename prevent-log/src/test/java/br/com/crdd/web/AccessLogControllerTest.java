@@ -4,7 +4,7 @@ package br.com.crdd.web;
 import br.com.crdd.common.mapper.ControllerManager;
 import br.com.crdd.config.IntegrationTest;
 import br.com.crdd.dao.AccessLogRepository;
-import br.com.crdd.web.accesLog.AccessLogDto;
+import br.com.crdd.web.open.accesLog.AccessLogDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Assert;
 import org.junit.Test;
